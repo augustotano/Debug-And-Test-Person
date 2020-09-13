@@ -6,16 +6,53 @@ namespace Tests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
+        [Test]
+        public void NombreVacio() 
         {
-            // Insertá tu código de inicialización aquí
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.Name = "";
+            Assert.AreEqual("Augusto",p1.Name);
         }
 
         [Test]
-        public void Test1() // Cambiá el nombre para indicar qué estás probando
+        public void NombreNull() 
         {
-            // Insertá tu código  de pruebaaquí
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.Name = null;
+            Assert.AreEqual("Augusto",p1.Name);
         }
+
+        [Test]
+        public void NombreNormal() 
+        {
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.Name = "Normal";
+            Assert.AreEqual("Normal",p1.Name);
+        }
+        
+        [Test]
+        public void IdIncorrecta() 
+        {
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.ID = "4.334.434-3";
+            Assert.AreEqual("5.461.645-1",p1.ID);
+        }
+
+        [Test]
+        public void IdSinPuntosNiGuiones() 
+        {
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.ID = "54616451";
+            Assert.AreEqual("54616451",p1.ID);
+        }
+
+        [Test]
+        public void IdLetras() 
+        {
+            Person p1 = new Person("Augusto", "5.461.645-1");
+            p1.ID = "kdsjdksjkdsj";
+            Assert.AreEqual("5.461.645-1",p1.ID);
+        }
+
     }
 }
